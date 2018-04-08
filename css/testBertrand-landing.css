@@ -1,0 +1,90 @@
+body {
+  padding:0px;
+  margin: 0px;
+  color:rgba(255,255,255,1);
+  background-color: rgba(0,0,0,1);
+  font-family: 'Source Code Pro', monospace;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,1);
+  background-image: url('../img/space-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+.dorothy-ball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 100%;
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: inset 30px -10px 60px 65px #9392d0, 0px 0px 100px 0px black;
+  opacity: 0; /* ------------ toggle maybe ------------ */
+}
+
+.ball-menu {
+  width: 350px;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /*border: 1px solid white;*/
+}
+
+.ball-menu-item {
+  width: 70px;
+  height: 70px;
+  background-color: #9392d0;
+  border-radius: 100%;
+  position: absolute;
+  cursor: pointer;
+  display: none;
+}
+.ball-menu-item.terminal {
+  top: 100px;
+  left: 0: 
+}
+.ball-menu-item.profile {
+  top: 30px;
+  left: 87.5px;
+}
+.ball-menu-item.challenges {
+  top: 30px;
+  right: 87.5px;
+}
+.ball-menu-item.calendar {
+  top: 100px;
+  right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
