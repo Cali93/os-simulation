@@ -5,31 +5,30 @@
 	<title>info panel</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="panel">
 		<div class="panel-content">
-			<h1>Dorothy Ai</h1>
-			<h5>Powered by the Nine</h5>
+			<h1>Dorothy Ai<span class="version">v.1</span></h1>
+			<h5 class="creators">Powered by the Nine</h5>
 			<a href="https://www.becode.org/">A BeCode Project</a>
-			<a href="policy/privacy.html">Privacy</a>
 			<a href="policy/cookies-policy.html">Cookies-policy</a>
+			<a href="policy/privacy.html">Privacy</a>
 		</div>
 	</div>
 	<div class="profile">
 		<div class="profile-content">
-			<h2>Profil</h2>
-				<div class="profile-input">
-					<input class="profile-name" type="text" name="name">
-					<input class="profile-linkedin" type="text" name="linkedin">
-					<input class="profile-github" type="text" name="github">
+			<h2 id="profile-tag">Profile<button class="profile-cogs-icon">
+					<i class="fas fa-cogs fa-lg"></i>
+			</button></h2>
+			<div class="profile-input__name">
+						<input class="profile-firstname" type="text" name="firstname" class="firstname" placeholder="Firstname">
+						<input class="profile-name language" type="text" name="name" placeholder="Name">
 				</div>
-				<div class="profile-input-right">
-					<input class="profile-firstname" type="text" name="firstname" class="firstname">
-					<input class="profile-language" type="text" name="language" class="language">
-				</div>
-				<button class="profile-cogs-icon">
-					<i class="fas fa-cogs"></i>
+				<div class="profile-input" id="profile-input">
+						<input class="profile-linkedin" type="text" name="linkedin" placeholder="Linkedin account">
+						<input class="profile-github" type="text" name="github" placeholder="Github account">
 				</div>
 		</div>
 	</div>
