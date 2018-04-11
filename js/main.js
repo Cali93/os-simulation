@@ -198,8 +198,8 @@ let breathingBall = anime({
     anime({ 
       targets: '.terminal',
       bottom: 0,
-      duration: 2000,
-      complete: function(){
+      duration: 1000,
+      begin: function(){
         myTimeline2
         .add({
           targets: '.menu-terminal',
