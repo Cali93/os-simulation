@@ -1,0 +1,83 @@
+body {
+	background-color: #978EFF;
+	font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+	color: white;
+	margin:5px 0px 0px 0px;
+	padding-left: 90px;
+}
+
+h2 {
+	margin: 5px 0px 0px 0px; 
+	padding-left: 125px;
+	padding-bottom: 2px;
+	color: white;
+}
+h5 {
+	color: lightgray;
+	padding-left: 105px;
+	margin-top: 0px
+}
+
+.panel {
+	position: absolute;
+	border-radius: 15px;
+	width: 55%;
+	height: 15%;
+}
+
+.box-content {
+	position: absolute;
+	left: 30px;
+	color: gray;
+}
+
+a {
+	color: white;
+	margin-right: 5px;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: line-through;
+}
+
+.profile {
+	position: absolute;
+	background-color: rgba(180, 180, 180, 0.9);
+	border-radius: 15px;
+	width: 75%;
+	height: 50%;
+	box-shadow: 0px 0px 10px 5px rgba(168, 163, 168, 0.9);
+	top: 250px;
+	left: 100px;
+}
+
+.profile-input {
+	margin-top: 30px;
+	background: transparent;
+	border: none;
+}
+
+.profile-cogs-icon {
+	padding: px 30px; 
+	position: absolute;
+	left: 400px;
+	top: 10px;
+
+}
+
+.fa-cogs {
+	padding: 30px 10px 30px 10px; 
+}
+
+input {
+	background: transparent;
+	border: none;
+	outline: none;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	box-shadow: 0px 2px 0px white;
+}
