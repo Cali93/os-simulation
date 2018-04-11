@@ -24,7 +24,8 @@
         <meta name="twitter:site" content="@becodeorg">
         <meta name="twitter:image" content="https://dorothycares.io/img/printscreen.jpg">
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,700" rel="stylesheet"> <!-- ADDED THIS -->
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/testBertrand-landing.css">
@@ -33,13 +34,29 @@
         
   <div id="particles-js"></div>
 
-  <div class="dorothy-ball"></div>
+  <div class="eye">
+    <div class="iris anim"></div>
+  </div>
+  
+  <!-- <div class="dorothy-ball"></div> -->
+  <div class="dorothy-ball-container">
+    <div class="dorothy-ball"></div>
+  </div>
+
+  <!-- <div id="idle-message" class="idle-message-style"><h1>Hey fellow becoder, wanna chat?</h1></div> -->
+  <div id="welcomeMessageContainer" class="idle-message-style">
+    <h1>Hey fellow becoder, <span></span></h1>
+  </div>
 
   <div class="ball-menu">
-    <div class="ball-menu-item terminal"><i class="far fa-window-maximize"></i></div>
-    <div class="ball-menu-item profile"><i class="fas fa-user"></i></div>
-    <div class="ball-menu-item challenges"><i class="fas fa-trophy"></i></div>
-    <div class="ball-menu-item calendar"><i class="far fa-calendar-alt"></i></div>
+    <div class="ball-menu-item terminal"><i class="fa fa-window-maximize"></i></div>
+    <div class="ball-menu-item-label terminal-label">Terminal</div>
+    <div class="ball-menu-item profile"><i class="fa fa-user"></i></div>
+    <div class="ball-menu-item-label profile-label">Profile</div>
+    <div class="ball-menu-item info"><i class="fa fa-info"></i></div>
+    <div class="ball-menu-item-label info-label">About</div>
+    <div class="ball-menu-item calendar"><i class="fa fa-calendar"></i></div>
+    <div class="ball-menu-item-label calendar-label">Calendar</div>
   </div>
 
   
