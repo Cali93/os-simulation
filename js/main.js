@@ -11,14 +11,26 @@ _______________________________
 */
 
 
-// Hide ball on page load
-$('.ball-menu-item').hide();
-
-let dorothyBall = $('.dorothy-ball');
+let dorothyBall = document.querySelector('.dorothy-ball');
+let menu = document.getElementsByClassName('ball-menu-item');
 let menuOpen = false; // used to tell whether menu was clicked or not (acts as switch)
 let message = document.querySelector('.welcome-message-style');
 let welcomeMessageContainer = document.getElementById('welcomeMessageContainer');
-let messageFirstTimeOpen = true;
+let messageClicked = false; // switch for whether welcome message was clicked or not
+let menuTerminal = document.querySelector('.menu-terminal');
+let menuProfile = document.querySelector('.menu-profile');
+let menuInfo = document.querySelector('.menu-info');
+let menuCalendar = document.querySelector('.menu-calendar');
+
+// function to show/hide menu (small balls)
+function showMenu (value) {
+  for(let i = 0; i < menu.length; i++){
+    menu[i].style.display = value;
+  }
+}
+
+// hide menu on page load
+showMenu("none");
 
 // intro animation [Anime JS], "breathing" ball effect
 let breathingBall = anime({
@@ -36,6 +48,7 @@ let breathingBall = anime({
 
 
 // $( window ).on( "load", function() {
+
   // on page load first make ball appear [Anime JS]
   anime({
     targets: '.dorothy-ball',
@@ -49,7 +62,7 @@ let breathingBall = anime({
   });
 
   // When ball is clicked
-  dorothyBall.click(function() {
+  dorothyBall.addEventListener('click', function() {
     // pause the breathing animation to avoid problems with its loop property [Anime JS]
     breathingBall.pause();
     // then move ball to the bottom [Anime JS]
@@ -68,8 +81,8 @@ let breathingBall = anime({
     if (menuOpen === false) {
       welcomeMessageContainer.style.opacity = 0;
       menuOpen = true;
-      // 'display block' (show) the menu (tiny balls)
-      $('.ball-menu-item').show();
+      // show the menu (small balls)
+      showMenu("block");
       // lay out the timeline [Anime JS]
       myTimeline
         .add({
@@ -92,14 +105,10 @@ let breathingBall = anime({
           scale: [0, 1],
           offset: '-=950',
           complete: function(){
-            if (messageFirstTimeOpen == true) {
+            if (messageClicked == false) {
               displayMessage();
               welcomeMessageContainer.style.opacity = 1;
-              messageFirstTimeOpen = false;
-            } else {
-              displayMessage();
-              welcomeMessageContainer.style.opacity = 1;
-            }
+            } 
           }
         });
     
@@ -163,19 +172,29 @@ let breathingBall = anime({
           offset: '-=800',
           easing: 'easeInBack',
           complete: function(){ // once all of these animations are completed run the following:
-            $('.ball-menu-item').hide();
-            $('.menu-terminal').css({transform: 'translateX(0%) translateY(0%)'});
-            $('.menu-profile').css({transform: 'translateX(0%) translateY(0%)'});
-            $('.menu-info').css({transform: 'translateX(0%) translateY(0%)'});
-            $('.menu-calendar').css({transform: 'translateX(0%) translateY(0%)'});
+            showMenu("none"); // hide the menu
+            menuTerminal.style.transform = "translateX(0%) translateY(0%)"; // set translate X and Y of menu buttons back to 0%
+            menuProfile.style.transform = "translateX(0%) translateY(0%)"; // set translate X and Y of menu buttons back to 0%
+            menuInfo.style.transform = "translateX(0%) translateY(0%)"; // set translate X and Y of menu buttons back to 0%
+            menuCalendar.style.transform = "translateX(0%) translateY(0%)"; // set translate X and Y of menu buttons back to 0%
           }
         })
     } 
   });
 
-  welcomeMessageContainer.addEventListener('click', function(){
+  welcomeMessageContainer.addEventListener('click', showTerminal);
+  menuTerminal.addEventListener('click', showTerminal);
+
+  function showTerminal() {
+    // set switch back to false so that we can open it with one click
+    menuOpen = false;
+    // message will no longer appear, terminal is now shown as bg 
+    messageClicked = true;
+    // create another timeline for the menu buttons [anime JS]
     let myTimeline2 = anime.timeline();
+    // fade out effect on welcome message
     welcomeMessageContainer.style.opacity = 0;
+    // below triggers animations (first one is the terminal popping up)
     anime({ 
       targets: '.terminal',
       bottom: 0,
@@ -236,20 +255,18 @@ let breathingBall = anime({
           duration: 300,
           offset: '-=800',
           easing: 'easeInBack',
-          complete: function(){ // once all of these animations are completed run the following:
-            $('.ball-menu-item').hide();
-            $('.menu-terminal').css({transform: 'translateX(0%) translateY(0%)'});
-            $('.menu-profile').css({transform: 'translateX(0%) translateY(0%)'});
-            $('.menu-info').css({transform: 'translateX(0%) translateY(0%)'});
-            $('.menu-calendar').css({transform: 'translateX(0%) translateY(0%)'});
+          complete: function(){ // once all of these animations are completed run the following (same as earlier):
+            welcomeMessageContainer.style.display = "none"; // hides welcome message for good
+            showMenu("none");
+            menuTerminal.style.transform = "translateX(0%) translateY(0%)";
+            menuProfile.style.transform = "translateX(0%) translateY(0%)";
+            menuInfo.style.transform = "translateX(0%) translateY(0%)";
+            menuCalendar.style.transform = "translateX(0%) translateY(0%)";
           }
         })
       }
-      // translateY: [
-      //   { value: -500, duration: 2000}, // Value is the position in pixel, duration in milliseconds
-      // ],
     });
-  });
+  }    
 
 // });
 
@@ -328,20 +345,7 @@ MIKEY
 ----------------------------------------------------------------------
 */
 
-/*
-Terminal animation (lighter version)
-_______________________________
-*/
 
-// document.getElementById('terminal').onclick = function(){   // Select element button "close" onclick
-//   // Anime.js change the value of the Y axis to create an animation
-//   anime({ 
-//     targets: 'main, terminal',              // The target to animate (only works with ID)
-//     translateY: [                   // Affect the Y axis
-//       { value: -500, duration: 2000},         // Value is the position in pixel, duration is the time the animation will take in millisecond
-//     ],
-//   });
-// }
 
 
 /*

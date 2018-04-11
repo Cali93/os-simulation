@@ -76,7 +76,8 @@ body {
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
-  font-size: 25px;
+  font-size: 20px;
+  color: white;
 }
 .ball-menu-item.menu-terminal {
   top: 60px;
@@ -220,7 +221,7 @@ MIKEY
   /* background-color: rgba(30, 60, 90, 0.6); to test aspect terminal #0C0221 */
   /*background-color: #57759f9e;*/
   width: 75%;  /*default ratio to keep*/
-  height: 80%;  /*Change the height to resize the box or proceed to animation*/
+  height: 85%;  /*Change the height to resize the box or proceed to animation*/
   border-top-left-radius: 10px;  /*Header of the terminal radius border set to 10px*/
   border-top-right-radius: 10px;
   /*margin-left: 22.5vw; 
@@ -319,7 +320,7 @@ Terminal Content
 .terminal-content { /*Container for content (input / output display*/
     padding: 0px 15px 0px 15px;
     min-height: 45vh;
-    max-height: 45vh;
+    max-height: 70%;
     overflow: auto;     Hide the scroll bar after multiple request*/
 }
 .terminal-content .message {
