@@ -10,11 +10,12 @@ $('.ball-menu-item').hide();
 
 let dorothyBall = $('.dorothy-ball');
 let menuOpen = false; // used to tell whether menu was clicked or not (acts as switch)
-let message = document.querySelector('.idle-message-style');
+let message = document.querySelector('.welcome-message-style');
 let welcomeMessageContainer = document.getElementById('welcomeMessageContainer');
 
 // intro animation [Anime JS], "breathing" ball effect
 let breathingBall = anime({
+
 	targets: '.dorothy-ball',
 	delay: 1500,
 	translateX: ['-50%', '-50%'],
@@ -66,22 +67,22 @@ $( window ).on( "load", function() {
 			// lay out the timeline [Anime JS]
 			myTimeline
 			  .add({
-			    targets: '.terminal',
+			    targets: '.menu-terminal',
 			    scale: [0, 1],
 			    offset: '+=500'
 			  })
 			  .add({
-			    targets: '.profile',
+			    targets: '.menu-profile',
 			    scale: [0, 1],
 			    offset: '-=950'
 			  })
 			  .add({
-			    targets: '.info',
+			    targets: '.menu-info',
 			    scale: [0, 1],
 			    offset: '-=950'
 			  })
 			  .add({
-			    targets: '.calendar',
+			    targets: '.menu-calendar',
 			    scale: [0, 1],
 			    offset: '-=950',
 			    complete: function(){
@@ -97,26 +98,26 @@ $( window ).on( "load", function() {
 			// lay out the timeline [Anime JS]
 			myTimeline
 			  .add({
-			    targets: '.terminal',
+			    targets: '.menu-terminal',
 			    scale: 0.4
 			  })
 			  .add({
-			    targets: '.profile',
+			    targets: '.menu-profile',
 			    scale: 0.4,
 			    offset: '-=850'
 			  })
 			  .add({
-			    targets: '.info',
+			    targets: '.menu-info',
 			    scale: 0.4,
 			    offset: '-=850'
 			  })
 			  .add({
-			    targets: '.calendar',
+			    targets: '.menu-calendar',
 			    scale: 0.4,
 			    offset: '-=850'
 			  })
 			  .add({
-			  	targets: '.terminal',
+			  	targets: '.menu-terminal',
 			  	scale: 0.4,
 			  	translateX: '150%',
 			  	translateY: '400%',
@@ -125,7 +126,7 @@ $( window ).on( "load", function() {
 			  	easing: 'easeInBack'
 			  })
 			  .add({
-			  	targets: '.profile',
+			  	targets: '.menu-profile',
 			  	scale: 0.4,
 			  	translateX: '100%',
 			  	translateY: '400%',
@@ -134,7 +135,7 @@ $( window ).on( "load", function() {
 			  	easing: 'easeInBack'
 			  })
 			  .add({
-			  	targets: '.info',
+			  	targets: '.menu-info',
 			  	scale: 0.4,
 			  	translateX: '-100%',
 			  	translateY: '400%',
@@ -143,7 +144,7 @@ $( window ).on( "load", function() {
 			  	easing: 'easeInBack'
 			  })
 			  .add({
-			  	targets: '.calendar',
+			  	targets: '.menu-calendar',
 			  	scale: 0.4,
 	    		translateX: '-150%',
 			  	translateY: '400%',
@@ -152,10 +153,10 @@ $( window ).on( "load", function() {
 			  	easing: 'easeInBack',
 	    		complete: function(){ // once all of these animations are completed run the following:
 	    			$('.ball-menu-item').hide();
-	    			$('.terminal').css({transform: 'translateX(0%) translateY(0%)'});
-	    			$('.profile').css({transform: 'translateX(0%) translateY(0%)'});
-	    			$('.info').css({transform: 'translateX(0%) translateY(0%)'});
-	    			$('.calendar').css({transform: 'translateX(0%) translateY(0%)'});
+	    			$('.menu-terminal').css({transform: 'translateX(0%) translateY(0%)'});
+	    			$('.menu-profile').css({transform: 'translateX(0%) translateY(0%)'});
+	    			$('.menu-info').css({transform: 'translateX(0%) translateY(0%)'});
+	    			$('.menu-calendar').css({transform: 'translateX(0%) translateY(0%)'});
 	    		}
 			  })
 		}	
@@ -165,92 +166,52 @@ $( window ).on( "load", function() {
 
 /*
 ----------------------------------------------------------------------
-EYE (MOUSE TRACKING)
+MOUSE TRACKING ANIMATION [OPTIONAL]
 ----------------------------------------------------------------------
 */
 
-let ball = {};
-let n_ball = document.querySelector(".dorothy-ball");
-// let n_iris = n_eye.querySelector(".iris");
-let size = n_ball.clientWidth;
-
-(window.onresize = function () {
-	ball.x = n_ball.offsetLeft + size / 2;
-	ball.y = n_ball.offsetTop + size / 2;
-})();
-
-window.onmouseout = window.onmouseleave = function () {
-	n_iris.setAttribute("class", "iris anim");
-};
-
-window.ontouchend = function (e) {
-	if (e.touches.length == 0) window.onmouseout();
-};
-
-window.onmousemove = function (e) {
-	n_iris.setAttribute("class", "iris");
-	let m = {
-		x: e.clientX - ball.x,
-		y: e.clientY - ball.y
-	};
-	let dist = Math.min(60, Math.max(-60, Math.sqrt(Math.pow(m.x, 2) + Math.pow(m.y, 2)) / 6));
-	let dir = Math.atan2(m.x, m.y);
-	m.rx = dist * -Math.cos(dir);
-	m.ry = dist * Math.sin(dir);
-	n_ball.style.transform = "rotateX(" + m.rx + "deg) rotateY(" + m.ry + "deg) translateZ(68px) scale(0.6)";
-};
-
-window.ontouchmove = window.ontouchstart = function (e) {
-	return window.onmousemove(e.touches[0]);
-};
-
-
-/*
-let eye = {};
-let n_eye = document.querySelector(".eye");
-let n_iris = n_eye.querySelector(".iris");
-let size = n_eye.clientWidth;
-
-(window.onresize = function () {
-	eye.x = n_eye.offsetLeft + size / 2;
-	eye.y = n_eye.offsetTop + size / 2;
-})();
-
-window.onmouseout = window.onmouseleave = function () {
-	n_iris.setAttribute("class", "iris anim");
-};
-
-window.ontouchend = function (e) {
-	if (e.touches.length == 0) window.onmouseout();
-};
-
-window.onmousemove = function (e) {
-	n_iris.setAttribute("class", "iris");
-	let m = {
-		x: e.clientX - eye.x,
-		y: e.clientY - eye.y
-	};
-	let dist = Math.min(60, Math.max(-60, Math.sqrt(Math.pow(m.x, 2) + Math.pow(m.y, 2)) / 6));
-	let dir = Math.atan2(m.x, m.y);
-	m.rx = dist * -Math.cos(dir);
-	m.ry = dist * Math.sin(dir);
-	n_iris.style.transform = "rotateX(" + m.rx + "deg) rotateY(" + m.ry + "deg) translateZ(68px) scale(0.6)";
-};
-
-window.ontouchmove = window.ontouchstart = function (e) {
-	return window.onmousemove(e.touches[0]);
-};
-*/
 
 
 /*
 ----------------------------------------------------------------------
-IDLE MESSAGE CENTRE PAGE
+WELCOME MESSAGE CENTRE PAGE
+----------------------------------------------------------------------
+*/
+function displayMessage () {
+	let welcomeMessageSpan = document.querySelector('#welcomeMessageContainer h1 span');
+	// array of different messages
+	let messageArray = ["wanna talk?", "ask me anything.", "wanna chat?", "can I help you with anything?", "what's up?", "how's it going?"];
+	// fetch message from messageArray at random
+	let randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
+	// what will be displayed once user updated their profile
+	// let messageGeneral = 'Hey fellow becoder,' + ' ' + randomMessage;
+	// what will be displayed if user hasn't updated their profile
+	let messageNoName = 'Hello stranger, I would love to know your name! You can do this by updating your profile page in the menu below.';
+	// let messageWithName = 'Hello <span>FETCH NAME IN DB</span>, wanna talk?'; // Use this with DB (check with backend guys) and associate with this an array of more messages like 'it's good to see you again' or 'long time no see'
+	
+	// add random message as content in the h1
+	welcomeMessageSpan.innerHTML = randomMessage;
+
+
+	/* TO IMPLEMENT LATER:
+
+	if (USER HAS UPDATED PROFILE) {
+		welcomeMessageH1.innerHTML = messageGeneral;
+	} else if(USER HAS NOT UPDATED PROFILE) {
+		welcomeMessageH1.innerHTML = messageNoName;
+	}
+	*/
+}
+
+
+/*
+----------------------------------------------------------------------
+IDLE MESSAGE CENTRE PAGE [OPTIONAL]
 ----------------------------------------------------------------------
 */
 
 // When user is idle for too long, launch function below:
-let inactivityTime = function () {
+/*let inactivityTime = function () {
     let t;
     window.onload = resetTimer;
     window.onmousemove = resetTimer;
@@ -267,67 +228,7 @@ let inactivityTime = function () {
         clearTimeout(t);
         t = setTimeout(displayMessage, 3000);
     }
-};
-
-// function to display welcome message:
-// function displayMessage () {
-// 	let welcomeMessageContainer = document.getElementById('welcomeMessageContainer');
-// 	// create h1 tag inside container
-// 	let welcomeMessageH1 = document.createElement('h1');
-// 	// array of different messages
-// 	let messageArray = ["wanna talk?", "ask me anything.", "wanna chat?", "can I help you with anything?", "what's up?", "how's it going?"];
-// 	// fetch message from messageArray at random
-// 	let randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
-// 	// what will be displayed once user updated their profile
-// 	let messageGeneral = 'Hey fellow becoder,' + ' ' + randomMessage;
-// 	// what will be displayed if user hasn't updated their profile
-// 	let messageNoName = 'Hello stranger, I would love to know your name! You can do this by updating your profile page in the menu below.';
-// 	// let messageWithName = 'Hello <span>FETCH NAME IN DB</span>, wanna talk?'; // Use this with DB (check with backend guys) and associate with this an array of more messages like 'it's good to see you again' or 'long time no see'
-// 	welcomeMessageContainer.classList.add('idle-message-style');
-// 	// add random message as content in the h1
-// 	welcomeMessageH1.innerHTML = messageGeneral;
-// 	// append the h1 back into the containing div
-// 	welcomeMessageContainer.appendChild(welcomeMessageH1);
-
-// 	/* TO IMPLEMENT LATER:
-
-// 	if (USER HAS UPDATED PROFILE) {
-// 		welcomeMessageH1.innerHTML = messageGeneral;
-// 	} else if(USER HAS NOT UPDATED PROFILE) {
-// 		welcomeMessageH1.innerHTML = messageNoName;
-// 	}
-// 	*/
-// }
-
-function displayMessage () {
-	let welcomeMessageSpan = document.querySelector('#welcomeMessageContainer h1 span');
-	// array of different messages
-	let messageArray = ["wanna talk?", "ask me anything.", "wanna chat?", "can I help you with anything?", "what's up?", "how's it going?"];
-	// fetch message from messageArray at random
-	let randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
-	// what will be displayed once user updated their profile
-	// let messageGeneral = 'Hey fellow becoder,' + ' ' + randomMessage;
-	// what will be displayed if user hasn't updated their profile
-	let messageNoName = 'Hello stranger, I would love to know your name! You can do this by updating your profile page in the menu below.';
-	// let messageWithName = 'Hello <span>FETCH NAME IN DB</span>, wanna talk?'; // Use this with DB (check with backend guys) and associate with this an array of more messages like 'it's good to see you again' or 'long time no see'
-	
-	// add random message as content in the h1
-	// welcomeMessageSpan.innerHTML = messageGeneral;
-	welcomeMessageSpan.innerHTML = randomMessage;
-
-
-	/* TO IMPLEMENT LATER:
-
-	if (USER HAS UPDATED PROFILE) {
-		welcomeMessageH1.innerHTML = messageGeneral;
-	} else if(USER HAS NOT UPDATED PROFILE) {
-		welcomeMessageH1.innerHTML = messageNoName;
-	}
-	*/
-}
-
-// displayMessage(); 
-
+};*/
 
 
 
