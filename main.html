@@ -6,9 +6,11 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<link href="https://fonts.googleapis.com/css?family=Rajdhani:400" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,300" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/main.css">
+
 	<title>Dorothy v1.0</title>
 
 	<!-- OpenGraph -->
@@ -27,8 +29,8 @@
         <meta name="twitter:title" content="DorothAI">
         <meta name="twitter:site" content="@becodeorg">
         <meta name="twitter:image" content="https://dorothycares.io/img/printscreen.jpg"> 
-        <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/normalize.css">
+        
+        
         
 </head>
   <body id="body">
@@ -96,7 +98,43 @@
 
     <!-- Profile page -->
     <section id="profilePage">
-      
+      <div class="modal-container-2">
+        <div class="modal-body">
+          <div class="modal-body-title-container">
+            <div class="modal-body-title-title"><h1 class="modal-body-title">PROFILE</h1></div>
+            <div class="modal-body-title-icons">
+              <i id="profile-update"></i> <!-- INSERT FONT AWESOME COG -->
+              <i id="profile-logout"></i> <!-- INSERT FONT AWESOME LOGOUT -->
+            </div>
+          </div>
+          <form id="profile-details" class="profile-details" action="" method=""> <!-- LAURENT -->
+            <span>
+              <label for="profile-lastname">LAST NAME</label>
+              <input id="profile-lastname" type="text"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
+            </span>
+            <span>
+              <label for="profile-firstname">FIRST NAME</label>
+              <input id="profile-firstname" type="text"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
+            </span>
+            <span>
+              <label for="profile-language">LANGUAGE</label>
+              <input id="profile-language" type="checkbox">
+            </span>
+            <span>
+              <label for="profile-github">GITHUB</label>
+              <input id="profile-github" type="text" placeholder="GITHUB">
+            </span>
+            <span>
+              <label for="profile-linkedin">LINKEDIN</label>
+              <input id="profile-linkedin" type="text" placeholder="LINKEDIN">
+            </span>
+            <input id="profile-save-details" class="profile-save-details" type="submit" value="SAVE"> <!-- HIDE UNTIL USER CLICKS ON UPDATE -->
+          </form> 
+        </div>
+        <div class="modal-header-2">
+          <div id="answer-modal-btn" class="modal-close-btn-2"></div>
+        </div>
+      </div>
     </section>
     
     <!-- Info page -->
@@ -105,7 +143,7 @@
     </section>
     
     <!-- Long answer template (for long answers e.g. about a specific coding language) -->
-    <section id="answerTemplate">
+    <aside id="answerTemplate">
       <div class="modal-container">
         <div class="modal-header">
           <div id="answer-modal-btn" class="modal-close-btn"></div>
@@ -130,7 +168,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </aside>
 
     
 

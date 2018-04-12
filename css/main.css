@@ -190,7 +190,7 @@ EYE (MOUSE TRACKING & AUTO ANIMATION)
 
 /*
 ----------------------------------------------------------------------
-LONG ANSWER TEMPLATE
+MODALS
 ----------------------------------------------------------------------
 */
 
@@ -200,9 +200,9 @@ LONG ANSWER TEMPLATE
   position: fixed;
   /*padding-right: 40px;*/
   padding: 25px 40px 10px 0;
-  top: 50%; /*hide the box before the animation*/
-  right: -20px;
-  /*right: -100%;*/
+  top: 50%;
+  /*right: -20px;*/
+  right: -100%;
   transform: translateY(-50%);
   background-color: rgba(38, 38, 38, 0.78);
   border-top-left-radius: 10px;
@@ -211,10 +211,32 @@ LONG ANSWER TEMPLATE
   transition: right ease 0.5s;
   z-index: 11;
 }
+
+#profilePage { /* PROFILE */
+  width: 90%;
+  height: 80%;
+  position: fixed;
+  padding: 25px 40px 10px 0;
+  /*top: -120%;*/ /* hides the profile modal */
+  top: 0; /* shows the profile modal */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: -1px 1px 80px -40px #0D1321;
+  transition: top ease 0.5s;
+  z-index: 11;
+}
+
 .modal-container {
-  
   display: flex;
   color: white;
+}
+.modal-container-2 { /* PROFILE */
+  display: flex;
+  flex-direction: column;
+  color: #232323;
 }
 .modal-header {
   position: absolute;
@@ -224,14 +246,31 @@ LONG ANSWER TEMPLATE
   left: 0;
   height: 100%;
   width: 30px;
-  /*background-color: lightgrey;*/
   border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.modal-header-2 { /* PROFILE */
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  height: 100%;
+  width: 30px;
+  border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 .modal-header .modal-close-btn {
   height: 50px;
   width: 6px;
   background-color: white;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.modal-header-2 .modal-close-btn-2 { /* PROFILE */
+  height: 50px;
+  width: 6px;
+  background-color: #232323;
   border-radius: 50px;
   cursor: pointer;
 }
@@ -259,6 +298,9 @@ LONG ANSWER TEMPLATE
   line-height: 1.5;
 }
 
+/*.answer-template-trigger {
+  right: -20px !important;
+}*/
 
 
 /*
