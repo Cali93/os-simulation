@@ -21,6 +21,8 @@ let menuTerminal = document.querySelector('.menu-terminal');
 let menuProfile = document.querySelector('.menu-profile');
 let menuInfo = document.querySelector('.menu-info');
 let menuCalendar = document.querySelector('.menu-calendar');
+let answerModal = document.getElementById('answerTemplate');
+let longAnswerBtn = document.getElementById('answer-modal-btn');
 
 // function to show/hide menu (small balls)
 function showMenu (value) {
@@ -266,7 +268,23 @@ let breathingBall = anime({
         })
       }
     });
-  }    
+  }
+
+  // function showLongAnswerModal () {
+  //   // when user clicks on 
+  //   longAnswerBtn.addEventListener('click', function(){
+  //     answerModal.style.right = "-100%";
+  //   });
+  // }
+
+
+  longAnswerBtn.addEventListener('click', function(){
+    answerModal.style.right = "-120%";
+    if (menuOpen = false) {
+      
+    }
+    
+  });
 
 // });
 
@@ -402,8 +420,8 @@ let resizeReset = function() {
 }
 
 const opts = { 
-  particleColor: "rgb(255,255,255,1)",
-  lineColor: "rgb(150,150,150,1)",
+  particleColor: "white",
+  lineColor: "white",
   particleAmount: 30,
   defaultSpeed: 0.01,
   variantSpeed: 0.3,
