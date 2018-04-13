@@ -107,31 +107,30 @@
           <div class="modal-body-title-container">
             <div class="modal-body-title-title"><h1 class="modal-body-title">PROFILE</h1></div>
             <div class="modal-body-title-icons">
-              <i id="profile-update" class="profile-update fa fa-cog tooltip" aria-hidden="true"><span class="tooltiptext">edit profile</span></i></button> <!-- INSERT FONT AWESOME COG -->
               <i id="profile-logout" class="profile-logout fa fa-power-off tooltip" aria-hidden="true"><span class="tooltiptext">logout</span></i></button> <!-- INSERT FONT AWESOME LOGOUT -->
             </div>
           </div>
 
           <form id="profile-details" class="profile-details" action="" method=""> <!-- LAURENT -->
-            <span class="input-wrapper">
+            <span class="profile-input-wrapper">
               <label for="profile-lastname">LAST NAME</label>
-              <input id="profile-lastname" class="profile-lastname" type="text" placeholder="DOROTHY"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
+              <input id="profile-lastname" class="profile-lastname" type="text" placeholder="Dorothy"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
             </span>
-            <span class="input-wrapper">
+            <span class="profile-input-wrapper">
               <label for="profile-firstname">FIRST NAME</label>
-              <input id="profile-firstname" class="profile-firstname" type="text" placeholder="NINE"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
+              <input id="profile-firstname" class="profile-firstname" type="text" placeholder="Cares"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
             </span>
-            <span class="input-wrapper">
+            <span class="profile-input-wrapper">
               <label for="profile-language">LANGUAGE</label>
-              <input id="profile-language" class="profile-language" type="radio" checked="checked" name="ENG"><label class="english" onclick="profileedit()">En</label>
+              <input id="profile-language" class="profile-language" type="radio" checked="checked" name="ENG"><label class="english">En</label>
             </span>
-            <span class="input-wrapper">
+            <span class="profile-input-wrapper">
               <label for="profile-github">GITHUB</label>
-              <input id="profile-github" class="profile-github" type="text" name="Github account" placeholder="GITHUB">
+              <input id="profile-github" class="profile-github" type="text" name="Github account" placeholder="Github">
             </span>
-            <span class="input-wrapper">
+            <span class="profile-input-wrapper">
               <label for="profile-linkedin">LINKEDIN</label>
-              <input id="profile-linkedin" class="profile-linkedin" type="text" placeholder="LINKEDIN">
+              <input id="profile-linkedin" class="profile-linkedin" type="text" placeholder="Linkedin">
             </span>
             <input id="profile-save-details" class="profile-save-details" type="submit" value="SAVE"> <!-- HIDE UNTIL USER CLICKS ON UPDATE -->
           </form> 
