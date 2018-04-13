@@ -107,11 +107,11 @@
           <div class="modal-body-title-container">
             <div class="modal-body-title-title"><h1 class="modal-body-title">PROFILE</h1></div>
             <div class="modal-body-title-icons">
-              <i id="profile-logout" class="profile-logout fa fa-power-off tooltip" aria-hidden="true"><span class="tooltiptext">logout</span></i></button> <!-- INSERT FONT AWESOME LOGOUT -->
+              <a href="/logout/"><i id="profile-logout" class="profile-logout fa fa-power-off tooltip" aria-hidden="true"><span class="tooltiptext">logout</span></i></a> <!-- ADDED ANCHOR TAG -->
             </div>
           </div>
 
-          <form id="profile-details" class="profile-details" action="" method=""> <!-- LAURENT -->
+          <form id="profile-details" class="profile-details" action="" method="">
             <span class="profile-input-wrapper">
               <label for="profile-lastname">LAST NAME</label>
               <input id="profile-lastname" class="profile-lastname" type="text" placeholder="Dorothy"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
@@ -132,7 +132,10 @@
               <label for="profile-linkedin">LINKEDIN</label>
               <input id="profile-linkedin" class="profile-linkedin" type="text" placeholder="Linkedin">
             </span>
-            <input id="profile-save-details" class="profile-save-details" type="submit" value="SAVE"> <!-- HIDE UNTIL USER CLICKS ON UPDATE -->
+            <div class="profile-buttons">
+              <button id="profile-add-details" class="profile-add-details">Add</button> <!-- ADDED THIS BUTTON -->
+              <input id="profile-save-details" class="profile-save-details" type="submit" value="SAVE">
+            </div>
           </form> 
 
         </div>
@@ -168,18 +171,6 @@
           <div class="modal-body-block">
             <h3 class="modal-body-block-title">What is PHP?</h3>
             <div class="modal-body-block-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, labore, tempora. A et voluptas cum, esse eum culpa pariatur tenetur praesentium dicta? Esse nobis voluptatibus architecto minima ea sint nostrum?</div>
-          </div>
-          <div class="modal-body-block">
-            <h3 class="modal-body-block-title">How to install PHP?</h3>
-            <div class="modal-body-block-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus molestias, vero non ad natus pariatur explicabo culpa error sint totam eos quas incidunt, architecto suscipit, rem ut veritatis doloribus eligendi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ullam fugiat dignissimos. Eum quod nisi cumque perferendis magnam porro, tempore, fuga molestiae adipisci ex eos ut amet magni nam voluptas!</div>
-          </div>
-          <div class="modal-body-block">
-            <h3 class="modal-body-block-title">How to install PHP?</h3>
-            <div class="modal-body-block-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus molestias, vero non ad natus pariatur explicabo culpa error sint totam eos quas incidunt, architecto suscipit, rem ut veritatis doloribus eligendi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ullam fugiat dignissimos. Eum quod nisi cumque perferendis magnam porro, tempore, fuga molestiae adipisci ex eos ut amet magni nam voluptas!</div>
-          </div>
-          <div class="modal-body-block">
-            <h3 class="modal-body-block-title">How to install PHP?</h3>
-            <div class="modal-body-block-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus molestias, vero non ad natus pariatur explicabo culpa error sint totam eos quas incidunt, architecto suscipit, rem ut veritatis doloribus eligendi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ullam fugiat dignissimos. Eum quod nisi cumque perferendis magnam porro, tempore, fuga molestiae adipisci ex eos ut amet magni nam voluptas!</div>
           </div>
         </div>
       </div>
