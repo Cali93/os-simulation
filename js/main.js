@@ -24,6 +24,8 @@ let menuCalendar = document.querySelector('.menu-calendar');
 let answerModal = document.getElementById('answerTemplate');
 let longAnswerBtn = document.getElementById('answer-modal-btn');
 let profileModal = document.getElementById('profilePage');
+let hidingBgDiv = document.getElementById('hiding-bg-div');
+let menuProfileIsClicked = false;
 
 // function to show/hide menu (small balls)
 function showMenu (value) {
@@ -48,8 +50,6 @@ let breathingBall = anime({
   loop: true,
   autoplay: false
 });
-
-
 
 // on page load first make ball appear [Anime JS]
 anime({
@@ -184,8 +184,23 @@ dorothyBall.addEventListener('click', function() {
   } 
 });
 
+// When user clicks on welcome message launch showTerminal() function
 welcomeMessageContainer.addEventListener('click', showTerminal);
+
+// When user clicks on terminal button in menu launch showTerminal() function
 menuTerminal.addEventListener('click', showTerminal);
+
+// When user clicks on profile button in menu ...
+menuProfile.addEventListener('click', function(){
+  // if profile button is not clicked
+  if (menuProfileIsClicked == false) {
+    menuProfileIsClicked = true; // set profile button as clicked
+    showProfile(); // launch showProfile() function
+  } else { // if profile button is clicked
+    menuProfileIsClicked = false; // set profile button as unclicked
+    hideProfile(); // launch hideProfile() function
+  }
+});
 
 function showTerminal() {
   // set switch back to false so that we can open it with one click
@@ -273,6 +288,8 @@ function showTerminal() {
 function showProfile () {
   // set switch back to false so that we can open it with one click
   menuOpen = false;
+  // show hiding background div so user can't click on background
+  hidingBgDiv.style.display = "block";
   // create another timeline for the menu buttons [anime JS]
   let myTimeline = anime.timeline();
   // below triggers animations (first one is the terminal popping up)
@@ -346,34 +363,39 @@ function showProfile () {
 function hideProfile () {
   // hide profile modal
   profileModal.style.top = '-120%';
-  // show menu
-  myTimeline
-      .add({
-        targets: '.menu-terminal',
-        scale: [0, 1],
-        offset: '+=500'
-      })
-      .add({
-        targets: '.menu-profile',
-        scale: [0, 1],
-        offset: '-=950'
-      })
-      .add({
-        targets: '.menu-info',
-        scale: [0, 1],
-        offset: '-=950'
-      })
-      .add({
-        targets: '.menu-calendar',
-        scale: [0, 1],
-        offset: '-=950'
-        // complete: function(){
-        //   if (messageClicked == false) {
-        //     displayMessage();
-        //     welcomeMessageContainer.style.opacity = 1;
-        //   } 
-        // }
-      });
+  // hide hiding background div so user can't click on background
+  hidingBgDiv.style.display = 'none';
+  if (menuOpen == true) {
+    // show menu
+    myTimeline
+        .add({
+          targets: '.menu-terminal',
+          scale: [0, 1],
+          offset: '+=500'
+        })
+        .add({
+          targets: '.menu-profile',
+          scale: [0, 1],
+          offset: '-=950'
+        })
+        .add({
+          targets: '.menu-info',
+          scale: [0, 1],
+          offset: '-=950'
+        })
+        .add({
+          targets: '.menu-calendar',
+          scale: [0, 1],
+          offset: '-=950'
+          // complete: function(){
+          //   if (messageClicked == false) {
+          //     displayMessage();
+          //     welcomeMessageContainer.style.opacity = 1;
+          //   } 
+          // }
+        });
+  }
+  
 }
 
 
@@ -389,6 +411,19 @@ longAnswerBtn.addEventListener('click', function(){
   answerModal.style.right = "-120%";
 });
 
+
+
+/*
+TERMINAL SCROLL BAR: scroll down automatically when scroll bar appears
+_______________________________
+*/
+
+let scrollContainer = document.getElementById("terminal-content");
+
+function scrollDown() {
+  // when user presses 'enter' scrollbar scrolls down automatically
+  scrollContainer.scrollTop = scrollContainer.scrollHeight;
+}
 
 /*
 MOUSE TRACKING ANIMATION [OPTIONAL]
@@ -615,7 +650,6 @@ MAIN
 ----------------------------------------------------------------------
 */
 
-
 const accessToken = 'c3fb78b0042f42cda2d1d28c9f682aae';
 const baseUrl = 'https://api.dialogflow.com/v1/';
 const version = '20170712';
@@ -712,6 +746,7 @@ $(function() { // = $(document).ready(function(){})
           $('.terminal-symbol').on('click',function(){
             $('.user-input').focus();
           });
+          scrollDown();
         },
       });
 

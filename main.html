@@ -34,8 +34,11 @@
         
 </head>
   <body id="body">
-    <!--Canvas container for the particles-->
+    <!-- Canvas container for the particles -->
   	<canvas id="canvas"></canvas>
+
+    <!-- Hiding background div for modals -->
+    <div id="hiding-bg-div" class="hiding-bg-div"></div>
 
     <!-- Date and time -->
     <nav class="os-bar">
@@ -74,7 +77,7 @@
           </button>         
 				</div>
 			</header>
-			<div class="terminal-content customScroll">  <!--Content inside the terminal i/o, interaction with dorothy by text-->
+			<div id="terminal-content" class="terminal-content customScroll">  <!--Content inside the terminal i/o, interaction with dorothy by text-->
         <div class="instruction">
           <div class="user-request">
             <span class="user"></span> <!-- can be removed -->
@@ -99,47 +102,60 @@
     <!-- Profile page -->
     <section id="profilePage">
       <div class="modal-container-2">
-        <div class="modal-body">
+        <div class="modal-body-2">
+
           <div class="modal-body-title-container">
             <div class="modal-body-title-title"><h1 class="modal-body-title">PROFILE</h1></div>
             <div class="modal-body-title-icons">
-              <i id="profile-update"></i> <!-- INSERT FONT AWESOME COG -->
-              <i id="profile-logout"></i> <!-- INSERT FONT AWESOME LOGOUT -->
+              <i id="profile-update" class="profile-update fa fa-cog tooltip" aria-hidden="true"><span class="tooltiptext">edit profile</span></i></button> <!-- INSERT FONT AWESOME COG -->
+              <i id="profile-logout" class="profile-logout fa fa-power-off tooltip" aria-hidden="true"><span class="tooltiptext">logout</span></i></button> <!-- INSERT FONT AWESOME LOGOUT -->
             </div>
           </div>
+
           <form id="profile-details" class="profile-details" action="" method=""> <!-- LAURENT -->
-            <span>
+            <span class="input-wrapper">
               <label for="profile-lastname">LAST NAME</label>
-              <input id="profile-lastname" type="text"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
+              <input id="profile-lastname" class="profile-lastname" type="text" placeholder="DOROTHY"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
             </span>
-            <span>
+            <span class="input-wrapper">
               <label for="profile-firstname">FIRST NAME</label>
-              <input id="profile-firstname" type="text"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
+              <input id="profile-firstname" class="profile-firstname" type="text" placeholder="NINE"> <!-- LAURENT: INITIALISE VALUE AS VALUE FETCHED FROM GOOGLE API -->
             </span>
-            <span>
+            <span class="input-wrapper">
               <label for="profile-language">LANGUAGE</label>
-              <input id="profile-language" type="checkbox">
+              <input id="profile-language" class="profile-language" type="radio" checked="checked" name="ENG"><label class="english" onclick="profileedit()">En</label>
             </span>
-            <span>
+            <span class="input-wrapper">
               <label for="profile-github">GITHUB</label>
-              <input id="profile-github" type="text" placeholder="GITHUB">
+              <input id="profile-github" class="profile-github" type="text" name="Github account" placeholder="GITHUB">
             </span>
-            <span>
+            <span class="input-wrapper">
               <label for="profile-linkedin">LINKEDIN</label>
-              <input id="profile-linkedin" type="text" placeholder="LINKEDIN">
+              <input id="profile-linkedin" class="profile-linkedin" type="text" placeholder="LINKEDIN">
             </span>
             <input id="profile-save-details" class="profile-save-details" type="submit" value="SAVE"> <!-- HIDE UNTIL USER CLICKS ON UPDATE -->
           </form> 
+
         </div>
+
         <div class="modal-header-2">
-          <div id="answer-modal-btn" class="modal-close-btn-2"></div>
+          <div id="profile-modal-btn" class="modal-close-btn-2"></div>
         </div>
+
       </div>
     </section>
     
     <!-- Info page -->
     <section id="infoPage">
-      
+      <div id="modal-container-3">
+        <div id="modal-body-info" class="modal-body-info">
+          <h1 class="modal-info-title">Dorothy Ai<span class="version">v.1</span></h1>
+          <h5 class="modal-info-creators">Powered by the Nine</h5>
+          <a class="modal-info-link" href="https://www.becode.org/">A Becode Project</a>
+          <a class="modal-info-link" href="policy/cookies-policy.html">Cookies-Policy</a>
+          <a class="modal-info-link" href="policy/privacy.html">Privacy</a>
+        </div>
+      </div>
     </section>
     
     <!-- Long answer template (for long answers e.g. about a specific coding language) -->
