@@ -644,113 +644,124 @@ setup();
 
 
 
-/*
-----------------------------------------------------------------------
-MAIN
-----------------------------------------------------------------------
-*/
 
-const accessToken = 'c3fb78b0042f42cda2d1d28c9f682aae';
+/***********
+* OLD MAIN *
+***********/
+
+let sessionId = Math.floor(Math.random() * Math.random() * 350000); // we generate a sessionId for dialogflow
+const accessToken = '20070064bedf4ee7b077ef1ae9ea64c0'; // agent v1 - DorothyAngular
+//const accessToken = 'c3fb78b0042f42cda2d1d28c9f682aae'; // agent v2 - DorothyCares
 const baseUrl = 'https://api.dialogflow.com/v1/';
 const version = '20170712';
 
 function nl2br(str) {
-  return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br>' + '$2');
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br>' + '$2');
 }
+
 function addFirstZero(i) {
-  if (i < 10) {
-    i = '0' + i;
-  }
-  return i;
+    if (i < 10) {
+        i = '0' + i;
+    }
+    return i;
 }
 
 function date_time(selector) {
-  let date = new Date;
-  let year = date.getFullYear();
-  let month = date.getMonth();
-  let d = date.getDate();
-  let h = date.getHours();
-  let m = date.getMinutes();
-  let s = date.getSeconds();
-  result = addFirstZero(date.getHours()) + ':' + addFirstZero(date.getMinutes()) + ':' + addFirstZero(date.getSeconds()) + '<br>';
-  result += addFirstZero(date.getDate()) + '/' +  addFirstZero(date.getMonth() + 1) + '/' + date.getFullYear();
-  $(selector).html(result);
-  setTimeout('date_time("'+selector+'");','1000');
-  return true;
+    let date = new Date;
+    result = addFirstZero(date.getHours()) + ':' + addFirstZero(date.getMinutes()) + ':' + addFirstZero(date.getSeconds()) + '<br>';
+    result += addFirstZero(date.getDate()) + '/' + addFirstZero(date.getMonth() + 1) + '/' + date.getFullYear();
+    $(selector).html(result);
+    setTimeout('date_time("' + selector + '");', '1000');
+    return true;
 }
 
 
-$(function() { // = $(document).ready(function(){})
-  let userInstruction; // variable temporaire
+$(function () { // = $(document).ready(function(){})
+    let userInstruction; // variable temporaire
 
-  $(document).ready(function(){
-    date_time('.os-bar__date-time');
-    $('.answer').first().hide();
-    $('.instruction').last().hide();
-    $('.answer').first().delay(1000).fadeIn();
-    $('.instruction').last().delay(1050).fadeIn(100);
-    $('.user-input').attr('contentEditable',true);
-    $('.terminal-symbol').on('click',function(){
-      $('.user-input').focus();
-    });
-  });
-
-  $('.terminal-content').on('click',function(e){
-    $('.user-input').focus();
-  });
-  $(document).on('keydown',function(e){ // we detect keyboard entry
-
-    $('.user-input').focus();
-
-    if (e.key == 'Enter' && userInstruction != '') {
-      e.preventDefault();
-      $('.user-input').attr('contentEditable',false);
-      userInstruction = $('.user-input').text(); // we save the current value
-      let randomNumber = Math.floor(Math.random() * 35000);
-      console.log(userInstruction);
-
-      $.ajax({
-        type: 'POST',
-        url: baseUrl + 'query?v=' + version,
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        headers: {
-          'Authorization': 'Bearer ' + accessToken
-        },
-        data: JSON.stringify({ query: userInstruction, lang: "en", sessionId: randomNumber }),
-
-        success: function(data, status) { // answer include the answer return by the script
-          answer = data.result.fulfillment.messages[0].speech;
-          answer = anchorme(nl2br(answer),{attributes:[{name:"target",value:"_blank"}],files:false,ips:false});
-          $('.terminal-control').remove();
-          $('<span class="request">' + userInstruction + '</span>').appendTo( $('.user-request').last() );
-          $('<div class="answer">' + answer + '</span>').appendTo( $('.user-request').last() );
-          $('<div class="instruction"></div>').appendTo( $('.terminal-content') );
-          $('<div class="user-request"></div>').appendTo( $('.instruction').last() );
-          $('<span class="user"></span><span class="symbol"></span>').appendTo( $('.instruction .user-request').last() );
-          $('<span class="terminal-control"><div class="user-input"></div><span class="terminal-symbol">_</span></span>').appendTo( $('.instruction .user-request').last() );
-        },
-        error: function(result, status, error) {
-          $('.terminal-control').remove();
-          $('<span class="request">' + userInstruction + '</span>').appendTo( $('.user-request').last() );
-          $('<div class="answer">Sorry. There is a bug in my brain. Please try again!</span>').appendTo( $('.user-request').last() );
-          $('<div class="instruction"></div>').appendTo( $('.terminal-content') );
-          $('<div class="user-request"></div>').appendTo( $('.instruction').last() );
-          $('<span class="user"></span><span class="symbol"></span>').appendTo( $('.instruction .user-request').last() );
-          $('<span class="terminal-control"><div class="user-input"></div><span class="terminal-symbol">_</span></span>').appendTo( $('.instruction .user-request').last() );
-        },
-        complete : function(result, status){
-          console.log('Request complete ['+ status +']');
-          window.scrollTo(0,document.body.scrollHeight);
-          $('.user-input').attr('contentEditable',true);
-          $('.terminal-symbol').on('click',function(){
+    $(document).ready(function () {
+        date_time('.os-bar__date-time');
+        $('.answer').first().hide();
+        $('.instruction').last().hide();
+        $('.answer').first().delay(1000).fadeIn();
+        $('.instruction').last().delay(1050).fadeIn(100);
+        $('.user-input').attr('contentEditable', true);
+        $('.terminal-symbol').on('click', function () {
             $('.user-input').focus();
-          });
-          scrollDown();
-        },
-      });
+        });
+    });
 
-    }
-  })
+    $('.terminal-content').on('click', function (e) {
+        $('.user-input').focus();
+    });
+    $(document).on('keydown', function (e) { // we detect keyboard entry
+
+        $('.user-input').focus();
+        userInstruction = $('.user-input').text(); // we save the current value
+
+        if (e.key == 'Enter' && userInstruction != '') {
+            e.preventDefault();
+            $('.user-input').attr('contentEditable', false);
+            //console.log(userInstruction);
+
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + 'query?v=' + version,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                data: JSON.stringify({
+                    query: userInstruction,
+                    lang: "en",
+                    sessionId: sessionId
+                }),
+
+                success: function (data, status) { // answer include the answer return by the script
+                    answer = data.result.fulfillment.messages[0].speech;
+                    answer = anchorme(nl2br(answer), {
+                        attributes: [{
+                            name: "target",
+                            value: "_blank"
+                        }],
+                        files: false,
+                        ips: false
+                    });
+                    if (typeof data.sessionId !== 'undefined') {
+                      sessionId = data.sessionId;
+                    }
+                    //console.log(data);
+                    $('.terminal-control').remove();
+                    $('<span class="request">' + userInstruction + '</span>').appendTo($('.user-request').last());
+                    $('<div class="answer">' + answer + '</span>').appendTo($('.user-request').last());
+                    $('<div class="instruction"></div>').appendTo($('.terminal-content'));
+                    $('<div class="user-request"></div>').appendTo($('.instruction').last());
+                    $('<span class="user"></span><span class="symbol"></span>').appendTo($('.instruction .user-request').last());
+                    $('<span class="terminal-control"><div class="user-input"></div><span class="terminal-symbol">_</span></span>').appendTo($('.instruction .user-request').last());
+                },
+                error: function (result, status, error) {
+                    $('.terminal-control').remove();
+                    $('<span class="request">' + userInstruction + '</span>').appendTo($('.user-request').last());
+                    $('<div class="answer">Sorry. There is a bug in my brai. Please try again!</span>').appendTo($('.user-request').last());
+                    $('<div class="instruction"></div>').appendTo($('.terminal-content'));
+                    $('<div class="user-request"></div>').appendTo($('.instruction').last());
+                    $('<span class="user"></span><span class="symbol"></span>').appendTo($('.instruction .user-request').last());
+                    $('<span class="terminal-control"><div class="user-input"></div><span class="terminal-symbol">_</span></span>').appendTo($('.instruction .user-request').last());
+                },
+                complete: function (result, status) {
+                    //console.log('Request complete [' + status + ']');
+                    window.scrollTo(0, document.body.scrollHeight);
+                    $('.user-input').attr('contentEditable', true);
+                    $('.terminal-symbol').on('click', function () {
+                        $('.user-input').focus();
+                    });
+                },
+            });
+
+        } else if (e.key == 'Enter' && userInstruction == '') {
+          e.preventDefault();
+        }
+    })
 
 });
