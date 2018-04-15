@@ -8,7 +8,34 @@ body {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  animation: bgColorAnim 300s infinite;
+  -webkit-animation: bgColorAnim 300s infinite;
+          animation: bgColorAnim 300s infinite;
+}
+
+@-webkit-keyframes bgColorAnim {
+  0% {
+    background-color: #978EFF;
+  }
+  20% {
+    background-color: #63A9FF;
+  }
+  35% {
+    background-color: #667cbe;
+  }
+  55% {
+    /*background-color: #FF6BAD;*/
+    background-color: #d47fa5;
+  }
+  70% {
+    /*background-color: #DD4493;*/
+    background-color: #b97cbf;
+  }
+  85% {
+    background-color: #7F49DD;
+  }
+  100% {
+    background-color: #978EFF;
+  }
 }
 
 @keyframes bgColorAnim {
@@ -246,7 +273,8 @@ MODALS
   top: 50%;
   /*right: -20px;*/
   right: -120%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   background-color: rgba(38, 38, 38, 0.78);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -259,13 +287,15 @@ MODALS
   /*width: 90%;*/
   /*height: 80%;*/
   width: 65%; /* MIKEY */
+  max-width: 800px;
   height: 80%; /* MIKEY */
   position: fixed;
   /*padding: 25px 40px 10px 0;*/ /* TOGGLE */
   top: -120%; /* hides the profile modal */
   /*top: 0;*/ /* shows the profile modal */
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   background-color: white;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -347,7 +377,8 @@ MODALS
   /*top: 30%;*/
   left: 50%;
   /*transform: translate(-50%, -30%);*/
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   overflow: auto;
   /*background-color: #57759f9e;*/
 }
@@ -448,6 +479,7 @@ MODALS
 .profile-save-details { /* PROFILE MIKEY */
   padding: 5px 0px; 
   margin-top: 15px;
+  margin-bottom: 50px;
   border-radius: 50px;
   border: none;
   outline: none;
@@ -575,7 +607,8 @@ MODALS
   width: 60%;
   position: relative;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 .modal-info-link:hover {
   text-decoration: line-through;
@@ -612,7 +645,8 @@ MIKEY
   position: fixed;
   bottom: -100%; /*hide the box before the animation*/
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   /* background-color: rgba(30, 60, 90, 0.6); to test aspect terminal #0C0221 */
   /*background-color: #57759f9e;*/
   width: 75%;  /*default ratio to keep*/
@@ -626,7 +660,7 @@ MIKEY
   transition: width ease 0.2s, margin ease 0.2s, top ease 0.2s;
   z-index: 0;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 /*White bar on top of the Terminal*/
@@ -779,7 +813,8 @@ Terminal interaction /Text/
     margin:0px 6px 0px 2px;
 }*/
 .answer {
-    color: #cfffff;
+    /*color: #cfffff;*/
+    color: #81ffff;
     margin-top: 15px;
 }
 .answer a {
@@ -803,8 +838,10 @@ Terminal interaction /Text/
 .user-request .terminal-symbol {
     font-size: 120%;
     font-weight: bold;
-    animation: blink .5s ease-in-out;
-    animation-iteration-count: infinite;
+    -webkit-animation: blink .5s ease-in-out;
+            animation: blink .5s ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
 }
 .terminal-control {
   margin-left: 20px;
@@ -963,6 +1000,18 @@ Login
 Keyframes for animation
 -----------------------------------------*/
 
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes blink {
   0% {
     opacity: 0;
@@ -973,4 +1022,40 @@ Keyframes for animation
   100% {
     opacity: 0;
   }
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 700px) {
+    /* make width of welcome message bigger */
+    .welcome-message-style {
+      width: 80%;
+    }
+    /* make width of terminal bigger and font-size a bit smaller */
+    .terminal {
+      width: 90%;
+      font-size: 0.9rem;
+    }
+    /* make width of modal bigger and height a bit smaller */
+    #profilePage {
+      width: 90%;
+      height: 70%;
+    }
+    /* reduce input text font-size */
+    .profile-input-wrapper input[type=text] {
+      font-size: 0.8rem;
+    }
+    /* reduce label text font-size */
+    .profile-input-wrapper label {
+      font-size: 0.8rem;
+    }
+    /* make width of info modal bigger */
+    #infoPage {
+      width: 60%;
+    }
+    /* hide date and time */
+    .os-bar__date-time {
+      display: none;
+    }
 }
