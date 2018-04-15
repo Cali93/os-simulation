@@ -602,6 +602,7 @@ function hideInfo () {
 // !!! ADD LINE BELOW TO CLOSE LONG ANSWER MODAL WHEN USER CLICKS ON TEXT WITH LINK PROVIDED BY DOROTHY
 longAnswerBtn.addEventListener('click', function(){
   answerModal.style.right = "-120%";
+  hidingBgDiv.style.display = "none";
 });
 
 
